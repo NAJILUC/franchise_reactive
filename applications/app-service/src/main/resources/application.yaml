@@ -30,4 +30,3 @@ adapters:
     schema: "public"
     username: "postgres"
     password: "pass"
-

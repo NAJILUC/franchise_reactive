@@ -1,14 +1,17 @@
 package co.com.franchise.model.franchise;
-import lombok.Builder;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-//import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import co.com.franchise.model.store.Store;
+import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
-//@NoArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class Franchise {
+    private Long id;
+    private String name;
+    private List<Store> stores;
 }
