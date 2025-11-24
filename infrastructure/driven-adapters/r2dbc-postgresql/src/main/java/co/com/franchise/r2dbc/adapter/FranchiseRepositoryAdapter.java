@@ -6,6 +6,7 @@ import co.com.franchise.r2dbc.mapper.FranchiseMapper;
 import co.com.franchise.r2dbc.repository.FranchiseReactiveRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
@@ -24,6 +25,12 @@ public class FranchiseRepositoryAdapter implements FranchiseRepository {
     @Override
     public Mono<Franchise> findById(Long franchiseId) {
         return franchiseReactiveRepository.findById(franchiseId)
+                .map(franchiseMapper::toDomain);
+    }
+
+    @Override
+    public Flux<Franchise> findAll() {
+        return franchiseReactiveRepository.findAll()
                 .map(franchiseMapper::toDomain);
     }
 }

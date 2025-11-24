@@ -12,7 +12,10 @@ public class FranchiseRouter {
     @Bean
     public RouterFunction<ServerResponse> route(FranchiseHandler handler) {
         return RouterFunctions.route()
+                .GET("/franchises", handler::findAll)
+                .GET("/franchises/stream", handler::findAllStream)
                 .POST("/franchises", handler::create)
+                .POST("/franchises/{id}/store", handler::createStore)
                 .build();
     }
 }

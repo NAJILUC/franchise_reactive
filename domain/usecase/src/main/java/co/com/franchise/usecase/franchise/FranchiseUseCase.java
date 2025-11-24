@@ -3,6 +3,7 @@ package co.com.franchise.usecase.franchise;
 import co.com.franchise.model.franchise.Franchise;
 import co.com.franchise.model.franchise.gateways.FranchiseRepository;
 import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
@@ -16,5 +17,9 @@ public class FranchiseUseCase {
 
     public Mono<Franchise> findById(Long id) {
         return franchiseRepository.findById(id);
+    }
+
+    public Flux<Franchise> findAll() {
+        return franchiseRepository.findAll();
     }
 }
